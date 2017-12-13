@@ -20,7 +20,8 @@ import java.util.LinkedList;
         String[][] edges = new String[210][20];
         String[] a;
         Vertex temp;
-        LinkedList<Vertex> vlist = new LinkedList();
+        LinkedList<Vertex> vlist;
+        vlist = new LinkedList();
         
         k = stream.readLine();
         while (k != null && k.compareTo("Edges") != 0) { // adding vertices and storing edges
@@ -40,7 +41,6 @@ import java.util.LinkedList;
         }
         
         in.close();
-        network.display();
     }
     
 }
