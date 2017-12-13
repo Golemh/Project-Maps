@@ -70,33 +70,33 @@ class LinkGenerator {
         return a;
     }
     
-    String setPath(String start, String end) {
+    void setPath(String start, String end) {
          start.replaceAll(" ", "+");
          end.replaceAll(" ", "+");
          String colour = "blue";
          String str = "&path=color:" +colour+ "|weight:5|" + start + "|" + end;
-         return str;
+         Param.append(str);
     }
     
-    String setPath(double startlat,double startlong, double endlat, double endlong) {
+    void setPath(double startlat,double startlong, double endlat, double endlong) {
          String colour = "blue";
          String str = "&path=color:" +colour + "|weight:5|" + startlat + "," + startlong
                  + "|" + endlat + "," + endlong;
-         return str;
+         Param.append(str);
     }
      
-    String SetPath(String[] path) { //Takes an array of latlongs strings to make a path between multiple locations.
+    void SetPath(String[] path) { //Takes an array of latlongs strings to make a path between multiple locations.
         String colour = "blue";
         String str = "&path=color:" +colour + "|weight:5|";
         for (int i = 0; i < path.length; i++) {
             str += path[i] + '|';
         }
-        return str;
+        Param.append(str);
     }
      
-    String addPath(double addlat, double addlong) {
+    void addPath(double addlat, double addlong) {
          String str = "|" + addlat + "," + addlong;
-         return str;
+         Param.append(str);
     }
      
     void setApiKey(String a) {
