@@ -77,5 +77,7 @@ public class Edge {
     Edge(Vertex v1, Vertex v2) {
         weight = Math.sqrt(Math.pow(v2.lat - v1.lat, 2)
                 + Math.pow(v2.lon - v1.lon, 2));
+        dst = v2;
+        src = v1;
     }
 }
