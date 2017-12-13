@@ -1,13 +1,12 @@
 public class GUI extends Application {
     
-    @Override
     public void start(Stage primaryStage) throws IOException {
-        GraphBuilder graph = new GraphBuilder();
+        final GraphBuilder graph = new GraphBuilder();
         graph.buildGraph();
         Button btn = new Button();
         
-        LinkGenerator Linkgen = new LinkGenerator();
-        Linkgen.setApiKey("AIzaSyCxkwnaGiEcNqla43FKBPfNR3sW-ApIQ5E");
+        LinkGenerator linkgen = new LinkGenerator();
+        linkgen.setApiKey("AIzaSyCxkwnaGiEcNqla43FKBPfNR3sW-ApIQ5E");
         Label start = new Label("Starting point: ");
         TextField a = new TextField();
         Label end = new Label("Ending point: ");
@@ -16,32 +15,32 @@ public class GUI extends Application {
         btn.setText("Show map");
         
         
-        Pane root = new Pane();
-        root.getChildren().add(btn);
-        root.getChildren().add(start);
-        root.getChildren().add(end);
-        root.getChildren().add(a);
-        root.getChildren().add(b);
+        GridPane root = new GridPane();
+        root.add(btn,350 , 60);
+        root.add(start, 150, 30);
+        root.add(end, 450, 30);
+        root.add(a, 350, 30);
+        root.add(b, 650, 30);
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
             public void handle(ActionEvent event) {
              Image map;
              ImageView MapView;
-             String startLoc = graph.network.find(a.getText()).Location;
-             String endLoc = graph.network.find(a.getText()).Location;
-             Linkgen.setPath(startLoc, endLoc);
-             String url = new String(Linkgen.generateLink());
+             String startLoc = graph.network.findLatLong(a.getText());
+             String endLoc = graph.network.findLatLong(b.getText());
+             linkgen.setPath(startLoc, endLoc);
+             String url = new String(linkgen.generateLink());
              map = new Image(url);
              MapView = ImageViewBuilder.create().image(map).build();
              root.getChildren().add(MapView);
-             Linkgen.clearParam();
+             linkgen.clearParam();
             }
         });
         
         Scene scene = new Scene(root, 700, 650);
         
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Project Maps");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
