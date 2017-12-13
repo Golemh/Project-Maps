@@ -85,13 +85,14 @@ class LinkGenerator {
          Param.append(str);
     }
      
-    void SetPath(String[] path) { //Takes an array of latlongs strings to make a path between multiple locations.
+   void SetPath(ArrayList<String> path) { //Takes an array of latlongs strings to make a path between multiple locations.
         String colour = "blue";
         String str = "&path=color:" +colour + "|weight:5|";
-        for (int i = 0; i < path.length; i++) {
-            str += path[i] + '|';
+        for (int i = 0; i < path.size(); i++) {
+            str += path.get(i) + '|';
         }
         Param.append(str);
+    }
     }
      
     void addPath(double addlat, double addlong) {
