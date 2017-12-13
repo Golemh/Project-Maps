@@ -41,6 +41,12 @@ public class Graph {
         return null;
     }
     
+    public String findLatLong(String a) {
+        Vertex c = this.findVert(a);
+        String str = c.lat + "," + c.lon;
+        return str;
+    }
+    
     public void display(){
         for (int i = 0; i < list.length; i++) {
             for (int j = 0; j < list[i].size(); j++) {
